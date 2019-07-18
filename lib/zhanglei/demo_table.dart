@@ -66,16 +66,16 @@ var tableTest = Table(
 //})
 
 var wrapTest = Wrap(
-  spacing: 8.0,//列间距
-  runSpacing: 8.0,//行间距
-  direction: Axis.horizontal,//排列方向
+  spacing: 8.0,
+  //列间距
+  runSpacing: 8.0,
+  //行间距
+  direction: Axis.horizontal,
+  //排列方向
 //  crossAxisAlignment: WrapCrossAlignment.center,
   alignment: WrapAlignment.spaceBetween,
   children: formColorList(30),
 );
-
-
-
 
 //TODO 使用 flow 布局
 var fowTest = Flow(
@@ -97,12 +97,15 @@ class MarginFlowDelegate extends FlowDelegate {
     for (int i = 0; i < context.childCount; i++) {
       var w = context.getChildSize(i).width + offsetX + _margin.right;
       if (w < context.size.width) {
-        context.paintChild(i, transform: new Matrix4.translationValues(offsetX, offsetY, 0.0));
+        context.paintChild(i,
+            transform: new Matrix4.translationValues(offsetX, offsetY, 0.0));
         offsetX = w + _margin.left;
       } else {
         offsetX = _margin.left;
-        offsetY += context.getChildSize(i).height + _margin.top + _margin.bottom;
-        context.paintChild(i, transform: new Matrix4.translationValues(offsetX, offsetY, 0.0));
+        offsetY +=
+            context.getChildSize(i).height + _margin.top + _margin.bottom;
+        context.paintChild(i,
+            transform: new Matrix4.translationValues(offsetX, offsetY, 0.0));
         offsetY += context.getChildSize(i).width + _margin.left + _margin.right;
       }
     }
@@ -131,6 +134,11 @@ formColorList(int count) {
 
 //随机颜色
 randomRGB() {
-  return Color.fromARGB(255, Random.secure().nextInt(255),
-      Random.secure().nextInt(255), Random.secure().nextInt(255));
+//  return Color.fromARGB(255, Random.secure().nextInt(255),
+//      Random.secure().nextInt(255), Random.secure().nextInt(255));
+  Random random = new Random();
+  int r = 30 + random.nextInt(200);
+  int g = 30 + random.nextInt(200);
+  int b = 30 + random.nextInt(200);
+  return Color.fromARGB(255, r, g, b);
 }

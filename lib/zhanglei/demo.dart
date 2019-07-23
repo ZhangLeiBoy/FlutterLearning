@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_module/zhanglei/demo_home.dart';
 import 'package:flutter_module/zhanglei/utils/routesUtil.dart';
+import 'package:simple_permissions/simple_permissions.dart';
 
 // ignore: must_be_immutable
 class TestApp extends StatelessWidget {
@@ -21,7 +22,7 @@ class TestApp extends StatelessWidget {
 class MyTextApp extends StatefulWidget {
   MyTextApp(this.title);
 
-  final String title;//params
+  final String title; //params
 
   @override
   _MyTextApp createState() => _MyTextApp();
@@ -51,9 +52,25 @@ class _MyTextApp extends State<MyTextApp> {
         backgroundColor: Colors.blue,
         elevation: 12,
         highlightElevation: 24,
-        onPressed: () {
+        onPressed: () async {
 //      Navigator.push(context,MaterialPageRoute(builder: (bu) => new RecyclePage()));
           Navigator.of(context).pushNamed(recycleList);
+          //权限申请
+//          if (await SimplePermissions.checkPermission(
+//                  Permission.ReadExternalStorage) ==
+//              false) {
+//            var a = SimplePermissions.requestPermission(
+//                Permission.ReadExternalStorage);
+//            a.then((status) {
+//              if (status == PermissionStatus.authorized) {
+//                print("$status authorized");
+//              } else if (status == PermissionStatus.denied) {
+//                print("$status denied");
+//              }
+//            });
+//          }else{
+//            print("already authorized");
+//          }
         },
         child: Icon(
           Icons.add,

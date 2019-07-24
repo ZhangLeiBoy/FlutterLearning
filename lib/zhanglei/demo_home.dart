@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/zhanglei/demo_gridview.dart';
+import 'package:flutterlearning/zhanglei/demo_gridview.dart';
 
 var chartLi = ["About", "Ball", "Card", "Dog"];
 var tabBar = TabBar(

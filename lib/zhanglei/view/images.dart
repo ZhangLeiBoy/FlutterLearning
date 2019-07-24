@@ -2,7 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_module/zhanglei/demo_table.dart';
+import 'package:flutterlearning/zhanglei/demo_table.dart';
 
 //资源：Image.asset(String name,
 //文件：Image.file(File file,

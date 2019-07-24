@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/pages/recycle_page.dart';
+import 'package:flutterlearning/pages/recycle_page.dart';
 
 var recycleList = "/recyclerList";
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/zhanglei/demo_home.dart';
-import 'package:flutter_module/zhanglei/utils/routesUtil.dart';
-import 'package:simple_permissions/simple_permissions.dart';
+import 'package:flutterlearning/pages/recycle_page.dart';
+import 'package:flutterlearning/zhanglei/demo_home.dart';
+import 'package:flutterlearning/zhanglei/utils/routesUtil.dart';
 
 // ignore: must_be_immutable
 class TestApp extends StatelessWidget {
@@ -53,8 +53,12 @@ class _MyTextApp extends State<MyTextApp> {
         elevation: 12,
         highlightElevation: 24,
         onPressed: () async {
-//      Navigator.push(context,MaterialPageRoute(builder: (bu) => new RecyclePage()));
-          Navigator.of(context).pushNamed(recycleList);
+          Navigator.push<String>(context, MaterialPageRoute(builder: (bu) {
+            return new RecyclePage();
+          })).then((String result){
+            print("result $result");
+          });
+//          Navigator.of(context).pushNamed(recycleList);
           //权限申请
 //          if (await SimplePermissions.checkPermission(
 //                  Permission.ReadExternalStorage) ==

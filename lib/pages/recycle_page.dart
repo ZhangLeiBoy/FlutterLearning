@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/zhanglei/utils/bgUtil.dart';
-import 'package:flutter_module/zhanglei/utils/pdUtil.dart';
+import 'package:flutterlearning/zhanglei/utils/bgUtil.dart';
+import 'package:flutterlearning/zhanglei/utils/pdUtil.dart';
 import 'package:simple_permissions/simple_permissions.dart';
 
 class RecyclePage extends StatefulWidget {
@@ -40,7 +40,7 @@ class _RecyclePageState extends State<RecyclePage> {
   _actionBar(BuildContext context) => AppBar(
         leading: MaterialButton(
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.pop(context, "携带参数回去111");
             },
             child: new Icon(Icons.arrow_back)),
         centerTitle: true,
@@ -154,24 +154,26 @@ class _RecyclePageState extends State<RecyclePage> {
     var list2 = ListView.separated(
       itemCount: 10,
       separatorBuilder: (BuildContext context, int index) {
-        return (index+1 ) % 2== 0 ? bg(Text("这是一条分割线不占用Count")) : Container();
+        return (index + 1) % 2 == 0 ? bg(Text("这是一条分割线不占用Count")) : Container();
       },
       itemBuilder: (BuildContext context, int index) {
         return item;
       },
     );
 
-    return Scaffold(appBar: _actionBar(context), body: list2);
+    return WillPopScope(
+        child: Scaffold(appBar: _actionBar(context), body: list2),
+        onWillPop: () async {
+          print("onWillPop");
+//          Navigator.pop(context, "携带参数回去");
+          return false;
+        });
   }
 
-
-
-  readFromSD() async{
-    try{
-      var prem = SimplePermissions.requestPermission(Permission.ReadExternalStorage);
-
-    }catch(e){
-
-    }
+  readFromSD() async {
+    try {
+      var prem =
+          SimplePermissions.requestPermission(Permission.ReadExternalStorage);
+    } catch (e) {}
   }
 }

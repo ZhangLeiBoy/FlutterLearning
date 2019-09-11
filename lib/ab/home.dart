@@ -5,6 +5,7 @@ import 'package:flutterlearning/ab/menu1/home_menu1.dart';
 import 'package:flutterlearning/ab/menu2/home_menu2.dart';
 import 'package:flutterlearning/ab/menu3/home_menu3.dart';
 import 'package:flutterlearning/ab/menu4/home_menu4.dart';
+import 'package:flutterlearning/zhanglei/utils/Global.dart';
 import 'package:flutterlearning/zhanglei/utils/pdUtil.dart';
 import 'package:flutterlearning/zhanglei/utils/routesUtil.dart';
 
@@ -41,6 +42,10 @@ class _MyHomeApp extends State<HomeApp> {
 
   @override
   Widget build(BuildContext context) {
+    print("home  $context");
+    print("home  ${Navigator.of(context)}");
+    Global.context = context; // 注入context
+
     return new MaterialApp(
       theme: ThemeData(primarySwatch: Colors.blue),
       routes: initRoutes(context),

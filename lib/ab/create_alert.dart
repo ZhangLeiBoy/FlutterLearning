@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutterlearning/zhanglei/utils/pdUtil.dart';
+import 'package:flutterlearning/zhanglei/utils/toastUtil.dart';
 
 class MenuAlertPage extends StatefulWidget {
   @override
@@ -125,13 +126,18 @@ class _MenuAlertPageState extends State<MenuAlertPage> {
   }
 
   Widget getItemContainer(String item) {
-    return Container(
-      alignment: Alignment.center,
-      child: Text(
-        item,
-        style: TextStyle(color: Colors.white, fontSize: 20),
+    return GestureDetector(
+      child: Container(
+        alignment: Alignment.center,
+        child: Text(
+          item,
+          style: TextStyle(color: Colors.white, fontSize: 20),
+        ),
+        color: Colors.blue,
       ),
-      color: Colors.blue,
+      onTap: (){
+        Toast.show("1");
+      },
     );
   }
 

@@ -10,7 +10,7 @@ class _Menu1PageState extends State<Menu1Page> {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.blue),
+//      theme: ThemeData(primarySwatch: Colors.blue),
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blue,

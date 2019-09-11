@@ -165,7 +165,7 @@ class _RecyclePageState extends State<RecyclePage> {
         child: Scaffold(appBar: _actionBar(context), body: list2),
         onWillPop: () async {
           print("onWillPop");
-//          Navigator.pop(context, "携带参数回去");
+          Navigator.pop(context, "携带参数回去");
           return false;
         });
   }

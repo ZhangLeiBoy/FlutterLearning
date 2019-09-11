@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutterlearning/ab/alert_page.dart';
 import 'package:flutterlearning/ab/create_alert.dart';
 import 'package:flutterlearning/ab/menu1/home_menu1.dart';
 import 'package:flutterlearning/ab/menu2/home_menu2.dart';
 import 'package:flutterlearning/ab/menu3/home_menu3.dart';
 import 'package:flutterlearning/ab/menu4/home_menu4.dart';
 import 'package:flutterlearning/zhanglei/utils/pdUtil.dart';
+import 'package:flutterlearning/zhanglei/utils/routesUtil.dart';
 
 //class HomeApp extends StatelessWidget {
 //  @override
@@ -41,6 +43,7 @@ class _MyHomeApp extends State<HomeApp> {
   Widget build(BuildContext context) {
     return new MaterialApp(
       theme: ThemeData(primarySwatch: Colors.blue),
+      routes: initRoutes(context),
       home: Stack(
         children: <Widget>[
           Scaffold(
@@ -48,13 +51,14 @@ class _MyHomeApp extends State<HomeApp> {
               children: <Widget>[
                 new Menu1Page(),
                 new Menu2Page(),
-                new MenuAlertPage(),
+                new AlertPage(),
                 new Menu3Page(),
                 new Menu4Page()
               ],
               physics: NeverScrollableScrollPhysics(),
               controller: pageController,
               onPageChanged: _onPageChanged,
+              pageSnapping: false,
             ),
             bottomNavigationBar: new BottomNavigationBar(
               items: [
@@ -78,10 +82,11 @@ class _MyHomeApp extends State<HomeApp> {
               child: pda(
                   FloatingActionButton(
                     elevation: 0,
+                    mini: true,
                     onPressed: _addOnTap,
                     child: Icon(
                       Icons.add,
-                      size: 40,
+                      size: 30,
                       color: Colors.white,
                     ),
                     backgroundColor: Colors.blue,
@@ -111,5 +116,11 @@ class _MyHomeApp extends State<HomeApp> {
   //点击加号
   void _addOnTap() {
     print("点击加号");
+    //Navigator.of(context).pushNamed(createAlert);
+    Navigator.push<String>(context, MaterialPageRoute(builder: (bu) {
+      return new MenuAlertPage();
+    })).then((String result) {
+      print("result $result");
+    });
   }
 }

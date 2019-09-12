@@ -14,7 +14,7 @@ class _Menu1PageState extends State<Menu1Page> {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blue,
-          title: Text("Menu1"),
+          title: Text("首页"),
         ),
         body: bg(Text("menu1")),
       ),

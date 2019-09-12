@@ -55,6 +55,7 @@ flutter:
     - images/controller_create_task.png
     - images/controller_create_topic.png
     - images/controller_create_video.png
+    - images/mine_header_bg.png
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 

@@ -10,7 +10,7 @@ class _Menu2PageState extends State<Menu2Page> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(
-        title: Text("Menu2"),
+        title: Text("线索"),
       ),
       body: Text("menu2"),
     );

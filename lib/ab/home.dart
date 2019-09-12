@@ -45,6 +45,12 @@ class _MyHomeApp extends State<HomeApp> {
     print("home  $context");
     print("home  ${Navigator.of(context)}");
     Global.context = context; // 注入context
+    final size = MediaQuery.of(context).size;
+    final width = size.width;
+    final height = size.height;
+    print('width is $width; height is $height');
+    Global.width = width;
+    Global.height = height;
 
     return new MaterialApp(
       theme: ThemeData(primarySwatch: Colors.blue),

@@ -49,6 +49,12 @@ flutter:
     - images/icon_resource_pdf.png
     - images/icon_resource_png.png
     - images/icon_resource_ppt.png
+    - images/controller_create_article.png
+    - images/controller_create_gallery.png
+    - images/controller_create_reporttopic.png
+    - images/controller_create_task.png
+    - images/controller_create_topic.png
+    - images/controller_create_video.png
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 

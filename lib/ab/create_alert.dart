@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutterlearning/zhanglei/bean/alertData.dart';
+import 'package:flutterlearning/zhanglei/utils/Global.dart';
 import 'package:flutterlearning/zhanglei/utils/pdUtil.dart';
 import 'package:flutterlearning/zhanglei/utils/toastUtil.dart';
 
@@ -72,23 +74,23 @@ class _MenuAlertPageState extends State<MenuAlertPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  Container(
+                  pd(Container(
                     child: GridView.count(
                       shrinkWrap: true,
-                      //水平子Widget之间间距
-                      crossAxisSpacing: 15.0,
-                      //垂直子Widget之间间距
-                      mainAxisSpacing: 15.0,
-                      //GridView内边距
-                      padding: EdgeInsets.all(10.0),
+//                      //水平子Widget之间间距
+//                      crossAxisSpacing: 15.0,
+//                      //垂直子Widget之间间距
+//                      mainAxisSpacing: 15.0,
+//                      //GridView内边距
+//                      padding: EdgeInsets.all(10.0),
                       //一行的Widget数量
-                      crossAxisCount: 4,
-                      //子Widget宽高比例
-                      childAspectRatio: 1.0,
+                      crossAxisCount: 3,
+//                      //子Widget宽高比例
+//                      childAspectRatio: 1.0,
                       //子Widget列表
                       children: getWidgetList(),
                     ),
-                  ),
+                  ),l: 10,r: 10,b: 20),
                   pda(
                       FloatingActionButton(
                         elevation: 0,
@@ -113,11 +115,20 @@ class _MenuAlertPageState extends State<MenuAlertPage> {
     );
   }
 
-  List<String> getDataList() {
-    List<String> list = [];
-    for (int i = 0; i < 8; i++) {
-      list.add(i.toString());
-    }
+  List<AlertData> getDataList() {
+    List<AlertData> list = [];
+    list.add(AlertData("reportTopic/ReportTopicCreate", "新建报题",
+        "images/controller_create_reporttopic.png"));
+    list.add(AlertData(
+        "topic/TopicCreate", "新建选题", "images/controller_create_topic.png"));
+    list.add(AlertData(
+        "mission/MissionCreate", "新建任务", "images/controller_create_task.png"));
+    list.add(AlertData("fusionNews/FusionNewsCreate", "发文稿",
+        "images/controller_create_article.png"));
+    list.add(AlertData("fusionTuji/FusionTujiCreate", "发图集",
+        "images/controller_create_gallery.png"));
+    list.add(AlertData("fusionVideo/FusionVideoCreate", "发视频",
+        "images/controller_create_video.png"));
     return list;
   }
 
@@ -125,18 +136,30 @@ class _MenuAlertPageState extends State<MenuAlertPage> {
     return getDataList().map((item) => getItemContainer(item)).toList();
   }
 
-  Widget getItemContainer(String item) {
+  Widget getItemContainer(AlertData item) {
     return GestureDetector(
       child: Container(
         alignment: Alignment.center,
-        child: Text(
-          item,
-          style: TextStyle(color: Colors.white, fontSize: 20),
+        width: Global.width * 1 / 3 - 20,
+        height: Global.width * 1 / 3,
+        child: Column(
+          children: <Widget>[
+            pda(
+                Image(
+                  width: Global.width * 1 / 4 - 20,
+                  height: Global.width * 1 / 4 - 20,
+                  image: AssetImage(item.imgName),
+                ),
+                5),
+            Text(
+              item.name,
+              style: TextStyle(color: Colors.grey, fontSize: 15),
+            )
+          ],
         ),
-        color: Colors.blue,
       ),
-      onTap: (){
-        Toast.show("1");
+      onTap: () {
+        Toast.toast(context, msg: item.outLink);
       },
     );
   }

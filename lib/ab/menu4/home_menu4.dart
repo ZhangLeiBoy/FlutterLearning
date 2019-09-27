@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterlearning/zhanglei/utils/bgUtil.dart';
 
@@ -68,77 +69,115 @@ class _Menu4PageState extends State<Menu4Page> {
           body: SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                bgShadowStyle(Column(), height: 150),
+                bgShadowStyle(
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Text("张雷",
+                                    style: TextStyle(
+                                        color: Colors.black, fontSize: 18)),
+                                Text("Android学习小组",
+                                    style: TextStyle(
+                                        color: Colors.grey, fontSize: 16)),
+                                Text("职位：酱油郎",
+                                    style: TextStyle(
+                                        color: Colors.grey, fontSize: 16))
+                              ],
+                            ),
+                            Icon(Icons.supervised_user_circle,
+                                color: Colors.blue, size: 70),
+                          ],
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                Icon(Icons.phone_android,
+                                    color: Colors.grey, size: 22),
+                                Text("18888888888",
+                                    style: TextStyle(
+                                        color: Colors.grey, fontSize: 16)),
+                              ],
+                            ),
+                            Icon(Icons.edit, color: Colors.blue, size: 25),
+                          ],
+                        )
+                      ],
+                    ),
+                    height: 150),
                 bgShadowStyle(Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Icon(Icons.local_gas_station, size: 30),
-                    Icon(Icons.local_airport, size: 30),
-                    Icon(Icons.local_atm, size: 30),
+                    Row(
+                      children: <Widget>[
+                        Icon(Icons.apps,
+                            color: Colors.blue, size: 26),
+                        Text("  我的收藏",
+                            style: TextStyle(
+                                color: Colors.black87, fontSize: 16)),
+                      ],
+                    ),
+                    Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 18),
                   ],
                 )),
                 bgShadowStyle(Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Icon(Icons.local_gas_station, size: 30),
-                    Icon(Icons.local_airport, size: 30),
-                    Icon(Icons.local_atm, size: 30),
+                    Row(
+                      children: <Widget>[
+                        Icon(Icons.apps,
+                            color: Colors.blue, size: 26),
+                        Text("  我的收藏",
+                            style: TextStyle(
+                                color: Colors.black87, fontSize: 16)),
+                      ],
+                    ),
+                    Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 18),
                   ],
                 )),
                 bgShadowStyle(Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Icon(Icons.local_gas_station, size: 30),
-                    Icon(Icons.local_airport, size: 30),
-                    Icon(Icons.local_atm, size: 30),
+                    Row(
+                      children: <Widget>[
+                        Icon(Icons.apps,
+                            color: Colors.blue, size: 26),
+                        Text("  我的收藏",
+                            style: TextStyle(
+                                color: Colors.black87, fontSize: 16)),
+                      ],
+                    ),
+                    Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 18),
                   ],
                 )),
                 bgShadowStyle(Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Icon(Icons.local_gas_station, size: 30),
-                    Icon(Icons.local_airport, size: 30),
-                    Icon(Icons.local_atm, size: 30),
-                  ],
-                )),
-                bgShadowStyle(Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Icon(Icons.local_gas_station, size: 30),
-                    Icon(Icons.local_airport, size: 30),
-                    Icon(Icons.local_atm, size: 30),
-                  ],
-                )),
-                bgShadowStyle(Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Icon(Icons.local_gas_station, size: 30),
-                    Icon(Icons.local_airport, size: 30),
-                    Icon(Icons.local_atm, size: 30),
-                  ],
-                )),
-                bgShadowStyle(Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Icon(Icons.local_gas_station, size: 30),
-                    Icon(Icons.local_airport, size: 30),
-                    Icon(Icons.local_atm, size: 30),
-                  ],
-                )),
-                bgShadowStyle(Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Icon(Icons.local_gas_station, size: 30),
-                    Icon(Icons.local_airport, size: 30),
-                    Icon(Icons.local_atm, size: 30),
+                    Row(
+                      children: <Widget>[
+                        Icon(Icons.apps,
+                            color: Colors.blue, size: 26),
+                        Text("  我的收藏",
+                            style: TextStyle(
+                                color: Colors.black87, fontSize: 16)),
+                      ],
+                    ),
+                    Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 18),
                   ],
                 ))
               ],

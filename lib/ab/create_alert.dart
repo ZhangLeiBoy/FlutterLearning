@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutterlearning/zhanglei/bean/alertData.dart';
@@ -74,39 +76,45 @@ class _MenuAlertPageState extends State<MenuAlertPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  pd(Container(
-                    child: GridView.count(
-                      shrinkWrap: true,
+                  pd(
+                      Container(
+                        child: GridView.count(
+                          shrinkWrap: true,
 //                      //水平子Widget之间间距
 //                      crossAxisSpacing: 15.0,
 //                      //垂直子Widget之间间距
 //                      mainAxisSpacing: 15.0,
 //                      //GridView内边距
 //                      padding: EdgeInsets.all(10.0),
-                      //一行的Widget数量
-                      crossAxisCount: 3,
+                          //一行的Widget数量
+                          crossAxisCount: 3,
 //                      //子Widget宽高比例
 //                      childAspectRatio: 1.0,
-                      //子Widget列表
-                      children: getWidgetList(),
-                    ),
-                  ),l: 10,r: 10,b: 20),
-                  pda(
-                      FloatingActionButton(
-                        elevation: 0,
-                        heroTag: null,
-                        mini: true,
-                        onPressed: () {
-                          Navigator.pop(context, "");
-                        },
-                        child: Icon(
-                          Icons.clear,
-                          size: 30,
-                          color: Colors.white,
+                          //子Widget列表
+                          children: getWidgetList(),
                         ),
-                        backgroundColor: Colors.blue,
                       ),
-                      5)
+                      l: 10,
+                      r: 10,
+                      b: 20),
+                  Container(
+                      margin: EdgeInsets.fromLTRB(
+                          0, 0, 0, Platform.isAndroid ? 0 : 30),
+                      child: pda(
+                          FloatingActionButton(
+                            elevation: 0,
+                            mini: true,
+                            onPressed: () {
+                              Navigator.pop(context, "");
+                            },
+                            child: Icon(
+                              Icons.clear,
+                              size: 30,
+                              color: Colors.white,
+                            ),
+                            backgroundColor: Colors.blue,
+                          ),
+                          5))
                 ],
               ),
             ),

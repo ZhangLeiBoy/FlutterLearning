@@ -1,6 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutterlearning/ab/alert_page.dart';
-import 'package:flutterlearning/ab/create_alert.dart';
 import 'package:flutterlearning/ab/menu1/home_menu1.dart';
 import 'package:flutterlearning/ab/menu2/home_menu2.dart';
 import 'package:flutterlearning/ab/menu3/home_menu3.dart';
@@ -8,6 +9,8 @@ import 'package:flutterlearning/ab/menu4/home_menu4.dart';
 import 'package:flutterlearning/zhanglei/utils/Global.dart';
 import 'package:flutterlearning/zhanglei/utils/pdUtil.dart';
 import 'package:flutterlearning/zhanglei/utils/routesUtil.dart';
+
+import 'create_alert.dart';
 
 //class HomeApp extends StatelessWidget {
 //  @override
@@ -42,13 +45,13 @@ class _MyHomeApp extends State<HomeApp> {
 
   @override
   Widget build(BuildContext context) {
-    print("home  $context");
-    print("home  ${Navigator.of(context)}");
+    //print("home  $context");
+    //print("home  ${Navigator.of(context)}");
     Global.context = context; // 注入context
     final size = MediaQuery.of(context).size;
     final width = size.width;
     final height = size.height;
-    print('width is $width; height is $height');
+    //print('width is $width; height is $height');
     Global.width = width;
     Global.height = height;
 
@@ -89,20 +92,24 @@ class _MyHomeApp extends State<HomeApp> {
             ),
           ),
           Align(
-              alignment: Alignment.bottomCenter,
-              child: pda(
-                  FloatingActionButton(
-                    elevation: 0,
-                    mini: true,
-                    onPressed: _addOnTap,
-                    child: Icon(
-                      Icons.add,
-                      size: 30,
-                      color: Colors.white,
+            alignment: Alignment.bottomCenter,
+            child: Container(
+                margin:
+                    EdgeInsets.fromLTRB(0, 0, 0, Platform.isAndroid ? 0 : 30),
+                child: pda(
+                    FloatingActionButton(
+                      elevation: 0,
+                      mini: true,
+                      onPressed: _addOnTap,
+                      child: Icon(
+                        Icons.add,
+                        size: 30,
+                        color: Colors.white,
+                      ),
+                      backgroundColor: Colors.blue,
                     ),
-                    backgroundColor: Colors.blue,
-                  ),
-                  5)),
+                    5)),
+          ),
         ],
       ),
     );
@@ -110,7 +117,7 @@ class _MyHomeApp extends State<HomeApp> {
 
   void _onTap(int index) {
     if (index != 2) {
-      print("onTap : $index");
+      //print("onTap : $index");
       bottomNavBarIndex = index;
       pageController.animateToPage(index,
           duration: const Duration(milliseconds: 300), curve: Curves.ease);
@@ -119,19 +126,46 @@ class _MyHomeApp extends State<HomeApp> {
 
   void _onPageChanged(int value) {
     setState(() {
-      print("onPageChanged $value ");
+      //print("onPageChanged $value ");
       this.bottomNavBarIndex = value;
     });
   }
 
+  static SlideTransition createTransition(
+      Animation<double> animation, Widget child) {
+    return new SlideTransition(
+      position: new Tween<Offset>(
+        begin: const Offset(0.0, -1.0),
+        end: const Offset(0.0, 0.0),
+      ).animate(animation),
+      child: child,
+    );
+  }
+
   //点击加号
   void _addOnTap() {
-    print("点击加号");
+    //print("点击加号");
     //Navigator.of(context).pushNamed(createAlert);
-    Navigator.push<String>(context, MaterialPageRoute(builder: (bu) {
-      return new MenuAlertPage();
-    })).then((String result) {
-      print("result $result");
+//    Navigator.push<String>(context, MaterialPageRoute(builder: (bu) {
+//      return new MenuAlertPage();
+//    })).then((String result) {
+//      //print("result $result");
+//    });
+    Navigator.push<String>(
+        context,
+        PageRouteBuilder(pageBuilder: (BuildContext context,
+            Animation<double> animation, Animation<double> secondaryAnimation) {
+          // 跳转的路由对象
+          return new MenuAlertPage();
+        }, transitionsBuilder: (
+          BuildContext context,
+          Animation<double> animation,
+          Animation<double> secondaryAnimation,
+          Widget child,
+        ) {
+          return createTransition(animation, child);
+        })).then((String result) {
+      //print("result $result");
     });
   }
 }

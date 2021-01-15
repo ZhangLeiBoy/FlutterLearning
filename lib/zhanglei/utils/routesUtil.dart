@@ -8,7 +8,7 @@ var createAlert = "/createAlert";
 
 initRoutes(BuildContext context){
   return <String, WidgetBuilder>{
-    recycleList: (BuildContext context) => RecyclePage(),
+//    recycleList: (BuildContext context) => RecyclePage(),
     createAlert: (BuildContext context) => MenuAlertPage(),
   };
 }

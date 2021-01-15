@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterlearning/zhanglei/utils/bgUtil.dart';
+import 'package:flutterlearning/zhanglei/utils/log_utils.dart';
+import 'package:keyboard_actions/keyboard_actions.dart';
 
 class Menu4Page extends StatefulWidget {
   @override
@@ -40,7 +43,15 @@ List<Widget> _sliverBuilder(BuildContext context, bool innerBoxIsScrolled) {
   ];
 }
 
-class _Menu4PageState extends State<Menu4Page> {
+class _Menu4PageState extends State<Menu4Page> with AutomaticKeepAliveClientMixin{
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Log.e("page4 initState");
+  }
+
   @override
   Widget build(BuildContext context) {
 //    return Scaffold(
@@ -49,7 +60,7 @@ class _Menu4PageState extends State<Menu4Page> {
 //        body: ,
 //      ),
 //    );
-
+    super.build(context);
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -66,125 +77,214 @@ class _Menu4PageState extends State<Menu4Page> {
             backgroundColor: Colors.transparent,
             title: Text("我的"),
           ),
-          body: SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                bgShadowStyle(
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Text("张雷",
-                                    style: TextStyle(
-                                        color: Colors.black, fontSize: 18)),
-                                Text("Android学习小组",
-                                    style: TextStyle(
-                                        color: Colors.grey, fontSize: 16)),
-                                Text("职位：酱油郎",
-                                    style: TextStyle(
-                                        color: Colors.grey, fontSize: 16))
-                              ],
-                            ),
-                            Icon(Icons.supervised_user_circle,
-                                color: Colors.blue, size: 70),
-                          ],
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Icon(Icons.phone_android,
-                                    color: Colors.grey, size: 22),
-                                Text("18888888888",
-                                    style: TextStyle(
-                                        color: Colors.grey, fontSize: 16)),
-                              ],
-                            ),
-                            Icon(Icons.edit, color: Colors.blue, size: 25),
-                          ],
-                        )
-                      ],
-                    ),
-                    height: 150),
-                bgShadowStyle(Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Icon(Icons.apps,
-                            color: Colors.blue, size: 26),
-                        Text("  我的收藏",
-                            style: TextStyle(
-                                color: Colors.black87, fontSize: 16)),
-                      ],
-                    ),
-                    Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 18),
-                  ],
-                )),
-                bgShadowStyle(Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Icon(Icons.apps,
-                            color: Colors.blue, size: 26),
-                        Text("  我的收藏",
-                            style: TextStyle(
-                                color: Colors.black87, fontSize: 16)),
-                      ],
-                    ),
-                    Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 18),
-                  ],
-                )),
-                bgShadowStyle(Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Icon(Icons.apps,
-                            color: Colors.blue, size: 26),
-                        Text("  我的收藏",
-                            style: TextStyle(
-                                color: Colors.black87, fontSize: 16)),
-                      ],
-                    ),
-                    Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 18),
-                  ],
-                )),
-                bgShadowStyle(Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Icon(Icons.apps,
-                            color: Colors.blue, size: 26),
-                        Text("  我的收藏",
-                            style: TextStyle(
-                                color: Colors.black87, fontSize: 16)),
-                      ],
-                    ),
-                    Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 18),
-                  ],
-                ))
-              ],
-            ),
-          ),
+          body:  defaultTargetPlatform == TargetPlatform.iOS ? FormKeyboardActions(
+            child:_buildBody()
+          ): SingleChildScrollView(
+              child:_buildBody()
+          )
         ),
       ),
     );
   }
+  _buildBody(){
+    return Column(
+      children: <Widget>[
+        bgShadowStyle(
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text("张雷",
+                            style: TextStyle(
+                                color: Colors.black, fontSize: 18)),
+                        Text("Android学习小组",
+                            style: TextStyle(
+                                color: Colors.grey, fontSize: 16)),
+                        Text("职位：酱油郎",
+                            style: TextStyle(
+                                color: Colors.grey, fontSize: 16))
+                      ],
+                    ),
+                    Icon(Icons.supervised_user_circle,
+                        color: Colors.blue, size: 70),
+                  ],
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Icon(Icons.phone_android,
+                            color: Colors.grey, size: 22),
+                        Text("18888888888",
+                            style: TextStyle(
+                                color: Colors.grey, fontSize: 16)),
+                      ],
+                    ),
+                    Icon(Icons.edit, color: Colors.blue, size: 25),
+                  ],
+                )
+              ],
+            ),
+            height: 150),
+        bgShadowStyle(Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Icon(Icons.apps,
+                    color: Colors.blue, size: 26),
+                Text("  我的收藏",
+                    style: TextStyle(
+                        color: Colors.black87, fontSize: 16)),
+              ],
+            ),
+            Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 18),
+          ],
+        )),
+        bgShadowStyle(Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Icon(Icons.apps,
+                    color: Colors.blue, size: 26),
+                Text("  我的收藏",
+                    style: TextStyle(
+                        color: Colors.black87, fontSize: 16)),
+              ],
+            ),
+            Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 18),
+          ],
+        )),
+        bgShadowStyle(Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Icon(Icons.apps,
+                    color: Colors.blue, size: 26),
+                Text("  我的收藏",
+                    style: TextStyle(
+                        color: Colors.black87, fontSize: 16)),
+              ],
+            ),
+            Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 18),
+          ],
+        )),
+        bgShadowStyle(Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Icon(Icons.apps,
+                    color: Colors.blue, size: 26),
+                Text("  我的收藏",
+                    style: TextStyle(
+                        color: Colors.black87, fontSize: 16)),
+              ],
+            ),
+            Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 18),
+          ],
+        )),
+        bgShadowStyle(Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Icon(Icons.apps,
+                    color: Colors.blue, size: 26),
+                Text("  我的收藏",
+                    style: TextStyle(
+                        color: Colors.black87, fontSize: 16)),
+              ],
+            ),
+            Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 18),
+          ],
+        )),
+        bgShadowStyle(Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Icon(Icons.apps,
+                    color: Colors.blue, size: 26),
+                Text("  我的收藏",
+                    style: TextStyle(
+                        color: Colors.black87, fontSize: 16)),
+              ],
+            ),
+            Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 18),
+          ],
+        )),
+        bgShadowStyle(Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Icon(Icons.apps,
+                    color: Colors.blue, size: 26),
+                Text("  我的收藏",
+                    style: TextStyle(
+                        color: Colors.black87, fontSize: 16)),
+              ],
+            ),
+            Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 18),
+          ],
+        )),
+        bgShadowStyle(Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Icon(Icons.apps,
+                    color: Colors.blue, size: 26),
+                Text("  我的收藏",
+                    style: TextStyle(
+                        color: Colors.black87, fontSize: 16)),
+              ],
+            ),
+            Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 18),
+          ],
+        )),
+        bgShadowStyle(Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Icon(Icons.apps,
+                    color: Colors.blue, size: 26),
+                Text("  我的收藏",
+                    style: TextStyle(
+                        color: Colors.black87, fontSize: 16)),
+              ],
+            ),
+            Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 18),
+          ],
+        ))
+      ],
+    );
+  }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

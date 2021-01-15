@@ -53,11 +53,11 @@ class _MyTextApp extends State<MyTextApp> {
         elevation: 12,
         highlightElevation: 24,
         onPressed: () async {
-          Navigator.push<String>(context, MaterialPageRoute(builder: (bu) {
-            return new RecyclePage();
-          })).then((String result){
-            print("result $result");
-          });
+//          Navigator.push<String>(context, MaterialPageRoute(builder: (bu) {
+//            return new RecyclePage();
+//          })).then((String result){
+//            print("result $result");
+//          });
 //          Navigator.of(context).pushNamed(recycleList);
           //权限申请
 //          if (await SimplePermissions.checkPermission(

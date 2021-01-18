@@ -78,7 +78,7 @@ class _Menu3PageState extends State<Menu3Page> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Column(
+                    Expanded(child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
@@ -88,13 +88,12 @@ class _Menu3PageState extends State<Menu3Page> {
                         ),
                         pd(
                             Text(
-                              "时间：${_data[index].createdAt}",
-                              style:
-                                  TextStyle(color: Colors.grey, fontSize: 16),
+                              "${_data[index].createUserName}创建于${_data[index].createdAt}",
+                              style: TextStyle(color: Colors.grey, fontSize: 16),
                             ),
                             t: 5)
                       ],
-                    ),
+                    )),
                     Text(_data[index].publishColumnName,style: TextStyle(color: Colors.grey,fontSize: 16))
                   ]));
         },
@@ -121,11 +120,11 @@ class _Menu3PageState extends State<Menu3Page> {
           data: map);
 //      var res = await RequestUtil.get(
 //          "http://task-team.cloud.hoge.cn/dev/Apitask/project/contentLatest?access_token=devbe5504d2a5c027e3139478b95055d92");
-      print(res);
+//       print(res);
       setState(() {
         loading = false;
         _data = fromJson(res);
-//        _data = TaskEntity.fromJson(res).data;
+       // _data = TaskEntity.fromJson(res).data;
       });
     } catch (e) {
       Log.e("exception $e");
@@ -135,16 +134,15 @@ class _Menu3PageState extends State<Menu3Page> {
     }
   }
 
-  static List<TaskData> fromJson(String json) {
+  static List<TaskData> fromJson(Map<String,dynamic> _json) {
     List<TaskData> _product = [];
-    JsonDecoder decoder = JsonDecoder();
-    var mapData = decoder.convert(json)['data'];
-    for (var obj in mapData) {
+    // var j ='{"code":200,"msg":"操作成功","data":[{"id":198,"type":"绘图相关","name":"","localPath":"---","jianshuUrl":"","juejinUrl":"---","imgUrl":"http://toly1994.com:8089/imgs/android/8a11d27d58f4c1fa4488cf39fdf68e76.png","createTime":"2021-02-18","info":"hh","area":"A"},{"id":200,"type":"绘图相关","name":"","localPath":"---","jianshuUrl":"","juejinUrl":"---","imgUrl":"http://toly1994.com:8089/imgs/android/8a11d27d58f4c1fa4488cf39fdf68e76.png","createTime":"2018-12-21","info":"hh","area":"A"}]}';
+    for (var obj in _json['data']) {
       TaskData pro = TaskData();
       pro.title = obj["title"];
       pro.publishColumnName = obj["sort_name"];
       pro.createdAt = obj["create_time_show"];
-      pro.createUserName = obj["project_user_name"];
+      pro.createUserName = obj["create_user_name"];
       _product.add(pro);
     }
     return _product;
